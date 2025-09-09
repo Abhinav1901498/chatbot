@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 600px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        label {
+            font-weight: bold;
+            color: #555;
+        }
+        input[type="text"] {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        input[type="submit"] {
+            background-color: #007bff;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        .output, .error {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 4px;
+        }
+        .output {
+            background-color: #f8f9fa;
+            border-left: 4px solid #007bff;
+            color: #333;
+        }
+        .error {
+            background-color: #ffe5e5;
+            border-left: 4px solid #dc3545;
+            color: #721c24;
+        }
+        @media (max-width: 500px) {
+            .container {
+                padding: 15px;
+            }
+            input[type="text"], input[type="submit"] {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Text Generation with Cohere</h1>
+        <form method="POST">
+            {{ form.hidden_tag() }}
+            <label for="{{ form.text.id }}">{{ form.text.label.text }}</label>
+            {{ form.text(size=50, placeholder="Enter text, e.g., What is bus topology?") }}
+            {{ form.submit() }}
+        </form>
+
+        {% if error %}
+            <div class="error">
+                <h2>Error:</h2>
+                <p>{{ error | safe }}</p>
+            </div>
+        {% endif %}
+
+        {% if output %}
+            <div class="output">
+                <h2>Generated Output:</h2>
+                <p>{{ output | safe }}</p>
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
