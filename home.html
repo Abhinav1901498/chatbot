@@ -1,110 +1,296 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chatbot</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f9;
-            margin: 0;
-            padding: 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-        }
-        .container {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            width: 100%;
-            max-width: 600px;
-        }
-        h1 {
-            text-align: center;
-            color: #333;
-        }
-        form {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-        label {
-            font-weight: bold;
-            color: #555;
-        }
-        input[type="text"] {
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            font-size: 16px;
-            width: 100%;
-            box-sizing: border-box;
-        }
-        input[type="submit"] {
-            background-color: #007bff;
-            color: white;
-            padding: 10px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 16px;
-            transition: background-color 0.3s;
-        }
-        input[type="submit"]:hover {
-            background-color: #0056b3;
-        }
-        .output, .error {
-            margin-top: 20px;
-            padding: 15px;
-            border-radius: 4px;
-        }
-        .output {
-            background-color: #f8f9fa;
-            border-left: 4px solid #007bff;
-            color: #333;
-        }
-        .error {
-            background-color: #ffe5e5;
-            border-left: 4px solid #dc3545;
-            color: #721c24;
-        }
-        @media (max-width: 500px) {
-            .container {
-                padding: 15px;
-            }
-            input[type="text"], input[type="submit"] {
-                font-size: 14px;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cohere Chatbot Landing Page</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
-<body>
-    <div class="container">
-        <h1>Text Generation with Cohere</h1>
-        <form method="POST">
-            {{ form.hidden_tag() }}
-            <label for="{{ form.text.id }}">{{ form.text.label.text }}</label>
-            {{ form.text(size=50, placeholder="Enter text, e.g., What is bus topology?") }}
-            {{ form.submit() }}
-        </form>
+<body class="bg-gradient-to-br from-purple-900 via-indigo-900 to-black text-white font-sans">
 
-        {% if error %}
-            <div class="error">
-                <h2>Error:</h2>
-                <p>{{ error | safe }}</p>
-            </div>
-        {% endif %}
+  <!-- Navbar -->
+  <nav class="flex justify-between items-center px-8 py-1 fixed w-full z-50 bg-black/50 backdrop-blur-md">
+    <div class="text-2xl font-bold text-pink-400">Cohere Chatbot</div>
+    <ul class="flex space-x-8 text-lg">
+      <li><a href="#home" class="hover:text-pink-400">Home</a></li>
+      <li><a href="#about" class="hover:text-pink-400">About</a></li>
+       <li><a href="#services" class="hover:text-pink-400">Services</a></li>
+        <li><a href="#chatbox" class="hover:text-pink-400">Chatbot</a></li>
+      <li><a href="#blog" class="hover:text-pink-400">Blog</a></li>
+      <li><a href="#features" class="hover:text-pink-400">Features</a></li>
+    </ul>
+    <a href="#signin" class="bg-pink-500 px-5 py-2 rounded-full hover:bg-pink-600">Sign In</a>
+    </nav>
+ 
 
-        {% if output %}
-            <div class="output">
-                <h2>Generated Output:</h2>
-                <p>{{ output | safe }}</p>
-            </div>
-        {% endif %}
+<!-- Hero Section with Background Image -->
+<section id="home" 
+  class="flex flex-col md:flex-row items-center justify-between px-10 pt-28 pb-16 min-h-screen relative bg-cover bg-center"
+  style="background-image: url('https://png.pngtree.com/thumb_back/fh260/background/20250821/pngtree-ai-chatbot-technology-futuristic-conversational-artificial-intelligence-background-image_18221775.webp');">
+
+  <!-- Overlay for readability -->
+  <div class="absolute inset-0 bg-black/70"></div>
+
+  <!-- Left Content -->
+  <div class="relative max-w-xl space-y-6 z-10 ml-40"> <!-- space-y-6 & ml-20 instead of space-y-10 & ml-40 -->
+    <h1 class="text-5xl md:text-6xl font-extrabold leading-tight">
+      Chatbots <br> 
+      <span class="text-pink-400">for your mobile applications</span>
+    </h1>
+    <p class="text-gray-300 leading-relaxed text-lg"> <!-- text-lg instead of text-xl -->
+      Experience next-level conversations with our AI-powered chatbot using Cohere.  
+      Engage your users 24/7, improve customer support, and transform interactions with intelligent automation.  
+      Build smarter communication systems that scale with your business needs.
+    </p>
+
+    <!-- Social Icons -->
+    <div class="flex justify-start space-x-4 pb-4"> <!-- space-x-4 & pb-4 instead of space-x-6 & pb-6 -->
+      <a href="#" class="p-2 bg-black hover:bg-pink-600 rounded-md">
+        <i class="fab fa-facebook-f text-white text-lg"></i>
+      </a>
+      <a href="#" class="p-2 bg-black hover:bg-pink-600 rounded-md">
+        <i class="fab fa-twitter text-white text-lg"></i>
+      </a>
+      <a href="#" class="p-2 bg-black hover:bg-pink-600 rounded-md">
+        <i class="fab fa-linkedin-in text-white text-lg"></i>
+      </a>
+      <a href="#" class="p-2 bg-black hover:bg-pink-600 rounded-md">
+        <i class="fab fa-instagram text-white text-lg"></i>
+      </a>
     </div>
+
+    <!-- Action Buttons -->
+    <div class="space-x-3 pb-4"> <!-- space-x-3 & pb-4 instead of space-x-4 & pb-6 -->
+      <a href="#details" class="bg-pink-500 hover:bg-pink-600 px-5 py-2.5 rounded-full text-sm md:text-base">
+        More Details
+      </a>
+      <a href="#demo" class="border border-pink-400 px-5 py-2.5 rounded-full hover:bg-pink-500 hover:text-white text-sm md:text-base">
+        View Demo
+      </a>
+    </div>
+  </div>
+</section>
+
+ <!-- About Us Section -->
+<section id="about" class="py-20 px-10 bg-gradient-to-r from-purple-800/70 to-pink-600/70 backdrop-blur-md">
+  <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+    
+    <!-- Left: Text Content -->
+    <div class="space-y-6 text-white">
+      <h2 class="text-4xl font-bold">About Us</h2>
+      <p class="text-xl text-gray-200 leading-relaxed">
+        We are a passionate team of developers and AI experts committed to transforming how businesses interact with their customers. 
+        Our mission is to bring smarter conversations through cutting-edge chatbot technology.
+      </p>
+      <p class="text-gray-300 leading-relaxed text-xl">
+        From startups to enterprises, we empower organizations with scalable, customizable, and secure AI solutions. 
+        Our chatbots are designed not only to answer queries but also to provide meaningful insights, 
+        automate tasks, and deliver 24/7 support. 
+      </p>
+      <p class="text-gray-300 leading-relaxed text-xl">
+        With a focus on innovation and user experience, we continuously push the boundaries of conversational AI to help 
+        businesses grow, engage, and retain their customers more effectively. 
+      </p>
+
+      <!-- Button -->
+      <a href="#services" class="inline-block bg-pink-500 hover:bg-pink-600 px-6 py-3 rounded-full text-lg font-medium mt-4">
+        Learn More
+      </a>
+    </div>
+
+    <!-- Right: Image -->
+    <div class="flex justify-center">
+      <img src="https://img.freepik.com/free-vector/chatbot-concept-illustration_114360-5522.jpg" 
+           alt="About Us" 
+           class="rounded-2xl shadow-lg w-[90%] md:w-[80%]">
+    </div>
+  </div>
+</section>
+
+  <!-- Services Section -->
+  <section id="services" class="py-20 bg-black/60 backdrop-blur-md">
+    <div class="text-center mb-12">
+      <h2 class="text-4xl font-bold">Our Services</h2>
+      <br>
+      <p class="text-gray-300 mt-2 text-xl">
+  Unlock smarter conversations with our next-gen AI chatbots.  
+ </p>
+    </div>
+    <div class="grid md:grid-cols-3 gap-8 px-10">
+      <div class="bg-white text-gray-800 rounded-xl p-6 shadow-lg">
+        <h3 class="text-xl font-semibold mb-3">Custom Chatbots</h3>
+        <p>We build chatbots tailored to your business needs with advanced AI capabilities.</p>
+      </div>
+      <div class="bg-white text-gray-800 rounded-xl p-6 shadow-lg">
+        <h3 class="text-xl font-semibold mb-3">24/7 Support</h3>
+        <p>Our bots provide non-stop assistance ensuring excellent customer service.</p>
+      </div>
+      <div class="bg-white text-gray-800 rounded-xl p-6 shadow-lg">
+        <h3 class="text-xl font-semibold mb-3">Analytics & Insights</h3>
+        <p>Get detailed analytics of conversations to improve your business strategies.</p>
+      </div>
+    </div>
+  </section>
+ <!-- Chatbot Form -->
+  <section id="chatbox" class="px-6 py-20 flex justify-center bg-white/80 backdrop-blur-md">
+    <div class="bg-white text-gray-800 rounded-2xl shadow-xl p-8 w-full max-w-2xl">
+      <h2 class="text-2xl font-bold text-center text-indigo-600 mb-6">Text Generation with Cohere</h2>
+      
+      <form method="POST" class="space-y-6">
+        {{ form.hidden_tag() }}
+        
+        <div>
+          <label for="{{ form.text.id }}" class="block font-semibold mb-2">{{ form.text.label.text }}</label>
+          {{ form.text(size=50, placeholder="Enter text, e.g., What is bus topology?", 
+                       class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-indigo-500 focus:outline-none") }}
+        </div>
+
+        <div>
+          {{ form.submit(class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-3 rounded-lg transition") }}
+        </div>
+      </form>
+
+      {% if error %}
+        <div class="mt-6 p-4 bg-red-100 border-l-4 border-red-500 text-red-700 rounded-lg">
+          <h3 class="font-bold">Error:</h3>
+          <p>{{ error | safe }}</p>
+        </div>
+      {% endif %}
+
+      {% if output %}
+        <div class="mt-6 p-4 bg-gray-100 border-l-4 border-indigo-600 rounded-lg">
+          <h3 class="font-bold text-indigo-600">Generated Output:</h3>
+          <p>{{ output | safe }}</p>
+        </div>
+      {% endif %}
+    </div>
+  </section>
+<!-- Blog Section -->
+  <section id="blog" class="py-20 bg-black/70 backdrop-blur-md px-10">
+    <div class="text-center mb-12">
+      <h2 class="text-4xl font-bold">Our Blog</h2>
+      <br>
+      <p class="text-gray-300 text-xl">
+  Stay ahead in the world of AI with the latest chatbot innovations.  
+ </p>
+    </div>
+    <div class="grid md:grid-cols-3 gap-8">
+      <div class="bg-white text-gray-800 rounded-xl shadow-lg overflow-hidden">
+        <img src="https://www.knowledge-sourcing.com/resources/wp-content/uploads/2024/12/AI-in-customer-service-market.webp" 
+        alt="Blog 1" class="w-full">
+        <div class="p-6">
+          <h3 class="text-xl font-semibold mb-2">AI in Customer Service</h3>
+          <p>Learn how AI is revolutionizing customer experience in different industries.</p>
+        </div>
+      </div>
+      <div class="bg-white text-gray-800 rounded-xl shadow-lg overflow-hidden">
+        <img src="https://www.ebotify.com/wp-content/uploads/2021/02/future-of-chatbots-jpg.webp" 
+        alt="Blog 2" class="w-full">
+        <div class="p-6">
+          <h3 class="text-xl font-semibold mb-2">Future of Chatbots</h3>
+          <p>Discover upcoming trends and technologies shaping the chatbot world.</p>
+        </div>
+      </div>
+      <div class="bg-white text-gray-800 rounded-xl shadow-lg overflow-hidden">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6gV2eEOpKOISDtGTni1tPFhKVkh-jW6gs-w&s"
+         alt="Blog 3" class="w-full">
+        <div class="p-6">
+          <h3 class="text-xl font-semibold mb-2">Cohere for Developers</h3>
+          <p>See how Cohere's NLP tools empower developers to build smarter applications.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+ <!-- Features Section -->
+<section id="features" class="py-20 px-10 bg-gradient-to-br from-purple-900 via-indigo-900 to-black">
+  <div class="text-center mb-16">
+    <h2 class="text-4xl font-extrabold text-white">Key Features</h2>
+    <p class="text-gray-400 mt-3 max-w-2xl mx-auto text-xl">
+      Explore the standout features that make our Cohere-powered chatbot fast, intelligent, and reliable.
+    </p>
+  </div>
+
+  <!-- Features Grid -->
+  <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10 max-w-6xl mx-auto">
+    
+    <!-- Feature 1 -->
+    <div class="p-8 rounded-2xl bg-gradient-to-tr from-pink-500/20 to-purple-600/20 border border-pink-400/40 hover:scale-105 transition-transform shadow-lg">
+      <div class="flex items-center justify-center w-14 h-14 bg-pink-500 rounded-full mb-6">
+        <i class="fas fa-brain text-white text-2xl"></i>
+      </div>
+      <h3 class="text-xl font-bold text-white mb-3">AI-Powered NLP</h3>
+      <p class="text-gray-300">
+        Understands user intent with advanced Natural Language Processing.
+      </p>
+    </div>
+
+    <!-- Feature 2 -->
+    <div class="p-8 rounded-2xl bg-gradient-to-tr from-blue-500/20 to-indigo-600/20 border border-blue-400/40 hover:scale-105 transition-transform shadow-lg">
+      <div class="flex items-center justify-center w-14 h-14 bg-blue-500 rounded-full mb-6">
+        <i class="fas fa-comments text-white text-2xl"></i>
+      </div>
+      <h3 class="text-xl font-bold text-white mb-3">Real-Time Responses</h3>
+      <p class="text-gray-300">
+        Lightning-fast replies for seamless customer engagement.
+      </p>
+    </div>
+
+    <!-- Feature 3 -->
+    <div class="p-8 rounded-2xl bg-gradient-to-tr from-green-500/20 to-emerald-600/20 border border-green-400/40 hover:scale-105 transition-transform shadow-lg">
+      <div class="flex items-center justify-center w-14 h-14 bg-green-500 rounded-full mb-6">
+        <i class="fas fa-language text-white text-2xl"></i>
+      </div>
+      <h3 class="text-xl font-bold text-white mb-3">Multi-Language Support</h3>
+      <p class="text-gray-300">
+        Communicate with users across different languages effortlessly.
+      </p>
+    </div>
+
+    <!-- Feature 4 -->
+    <div class="p-8 rounded-2xl bg-gradient-to-tr from-yellow-500/20 to-orange-600/20 border border-yellow-400/40 hover:scale-105 transition-transform shadow-lg">
+      <div class="flex items-center justify-center w-14 h-14 bg-yellow-500 rounded-full mb-6">
+        <i class="fas fa-lock text-white text-2xl"></i>
+      </div>
+      <h3 class="text-xl font-bold text-white mb-3">Secure & Reliable</h3>
+      <p class="text-gray-300">
+        Built with enterprise-grade security and privacy in mind.
+      </p>
+    </div>
+
+    <!-- Feature 5 -->
+    <div class="p-8 rounded-2xl bg-gradient-to-tr from-red-500/20 to-pink-600/20 border border-red-400/40 hover:scale-105 transition-transform shadow-lg">
+      <div class="flex items-center justify-center w-14 h-14 bg-red-500 rounded-full mb-6">
+        <i class="fas fa-plug text-white text-2xl"></i>
+      </div>
+      <h3 class="text-xl font-bold text-white mb-3">Easy Integration</h3>
+      <p class="text-gray-300">
+        Plug-and-play APIs to connect with your apps and platforms.
+      </p>
+    </div>
+
+    <!-- Feature 6 -->
+    <div class="p-8 rounded-2xl bg-gradient-to-tr from-teal-500/20 to-cyan-600/20 border border-teal-400/40 hover:scale-105 transition-transform shadow-lg">
+      <div class="flex items-center justify-center w-14 h-14 bg-teal-500 rounded-full mb-6">
+        <i class="fas fa-chart-pie text-white text-2xl"></i>
+      </div>
+      <h3 class="text-xl font-bold text-white mb-3">Advanced Analytics</h3>
+      <p class="text-gray-300">
+        Get deep insights into customer interactions and performance.
+      </p>
+    </div>
+
+  </div>
+</section>
+<!-- Footer -->
+  <footer class="bg-black/80 backdrop-blur-md text-center py-6">
+    <p class="text-gray-400">© 2025 Cohere Chatbot. All rights reserved.</p>
+    <div class="mt-2 space-x-4">
+      <a href="#" class="hover:text-white">Privacy Policy</a>
+      <a href="#" class="hover:text-white">Terms of Service</a>
+      <a href="#" class="hover:text-white">Contact</a>
+    </div>
+  </footer>
+
 </body>
 </html>
